@@ -3,50 +3,83 @@
 	// echo "<br>";
 	// var_dump ($_POST);
 
-	$signupEmailError = "Väli on kohustuslik";
-
-	// KAS KEEGI VAJUTAS NUPPU JA E-POST ON YLDSE OLEMAS?
+//Kasutajanime sisestamise kontroll
+	$signupEmailError = " *";
 
 if (isset ($_POST["signupEmail"])) {
+
+	if (empty ($_POST["signupEmail"])) {
+
+	echo " e-post on tyhi";
+	echo "<br><br>";
+	}
+
+}
+
+
+//Kasutaja parooli sisestamise kontroll
+$signupPasswordError = " *";
+
+if (isset ($_POST["signupPassword"])) {
+
+	if (empty ($_POST["signupPassword"])) 
+
+	 {
+
+		if (strlen($_POST["signupPassword"]) < 8 ) {
+
+			$signupPasswordError = " parool peab olema vähemalt 8 tähemärki pikk";
+		}
+	}
+
+	echo " parool on puudu";
+	}
+
+
+//Pangakaardi andmete sisestamise kontroll
+$creditCardError = " *";
+
+if (isset ($_POST["creditCard"])) {
 
 	// kas on tyhi?
 	// on olemas
 
-	if (empty ($_POST["signupEmail"])) {
+	if (empty ($_POST["creditCard"])) 
+
+	{
+		if (strlen($_POST["creditCard"]) != 16 ) {
+
+			$creditCardError = " Pangakaardi number peab olema 16 tähemärki pikk";
+		}
+
 
 	//on tyhi
 
-	echo "e-post on tyhi";
+	echo " kaardi andmed on puudu";
+	echo "<br><br>";
 	}
 
 }
-echo "<br><br>";
-$signupPasswordlError = "Väli on kohustuslik";
 
-	// KAS KEEGI VAJUTAS NUPPU JA E-POST ON YLDSE OLEMAS?
 
-if (isset ($_POST["signupPassword"])) {
+//Pangakaardi parooli sisestamise kontroll
+$creditCardPasswordError = " *";
 
+if (isset ($_POST["creditCardPassword"])) {
+
+	// kas on tyhi?
 	// on olemas
-	// kas on tyhi
 
-	if (empty ($_POST["signupPassword"])) 
+	if (empty ($_POST["creditCardPassword"])) {
 
-	else {
+	//on tyhi
 
-		if (strlen($_POST["signupPassword"]) < 8 ) {
-
-			$signupPasswordlError = "parool peab olema v2hemalt 8 t2hem2rki pikk";
-		}
-	}
-
-	echo "parool on puudu";
+	echo " kaardi parool on puudu";
 	}
 
 }
 
 
-	// KAS E-POST ON TYHI?
 ?>
 
 <!DOCTYPE html>
@@ -71,9 +104,19 @@ if (isset ($_POST["signupPassword"])) {
 
 				<input type="email" placeholder="loo kasutaja" name="signupEmail"><?php echo $signupEmailError; ?>
 				<br><br>
-				<input type="password" placeholder="sisesta parool" name="signupPassword"><?php echo $signupPasswordlError; ?>
+				<input type="password" placeholder="sisesta parool" name="signupPassword"><?php echo $signupPasswordError; ?>
 				<br><br>
 				<input type="submit" value="loo kasutaja">
+		</form>
+		
+		<h1>Sisesta pangakaardi andmed</h1>
+			<form method="POST">
+
+				<input type="text" placeholder="sisesta pangakaardi andmed" name="creditCard" maxlength=16><?php echo $creditCardError; ?>
+				<br><br>
+				<input type="password" placeholder="sisesta pangakaardi parool" name="creditCardPassword" maxlength=4><?php echo $creditCardPasswordError; ?>
+				<br><br>
+				<input type="submit" value="edasta andmed">
 		</form>
 	</body>
 </html>
