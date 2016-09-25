@@ -4,6 +4,7 @@
 	// var_dump ($_POST);
 
 //Kasutajanime sisestamise kontroll
+echo "mvp kirjeldus: Pinkisi matchmaker; TLÜ kohvikute võrdlev lehekülg; teenindussektori töötajate väärtuse hindamise loodud tagasiside keskkond, A la 'Kiida teenindajat'. Teenindaja annab kliendile unikaalse id, mille alusel saab tagasiside anda.  kuu<br><br>";
 	$signupEmailError = " *";
 
 if (isset ($_POST["signupEmail"])) {
