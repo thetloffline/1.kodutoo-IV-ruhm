@@ -107,10 +107,10 @@ if (isset ($_POST["creditCardPassword"])) {
 				<input type="password" placeholder="sisesta parool" name="signupPassword"><?php echo $signupPasswordError; ?>
 				<br><br>
 				<input type="submit" value="loo kasutaja">
-		</form>
+		
 		
 		<h1>Sisesta pangakaardi andmed</h1>
-			<form method="POST">
+			
 
 				<input type="text" placeholder="sisesta pangakaardi andmed" name="creditCard" maxlength=16><?php echo $creditCardError; ?>
 				<br><br>
